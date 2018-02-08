@@ -35,7 +35,7 @@ function changeBrand()
 }
 
 
-function calcSysPrice(sysArray)
+function setBasePrice(sysArray)
 {
 //Function definitely needs refactoring. Has to be better/more efficient methood of choice iteration.
     var basePrice = 0;
@@ -138,5 +138,44 @@ function calcSysPrice(sysArray)
             }
 
         }
+        
+        else if(sysArray[1] == 4)
+        {
+            if(sysArray[2] == 'Celeron' && sysArray[3] >= 2.0 && sysArray[3] >= 3.0)
+            {
+                basePrice = 80.00;
+            }
+
+            else if(sysArray[2] == 'Pentium' && sysArray[3] >= 2.0 && sysArray[3] >= 3.0)
+            {
+                basePrice = 110.00;
+            }
+
+            else if(sysArray[2] == 'i3' && sysArray[3] >= 2.0 && sysArray[3] >= 3.0)
+            {
+                basePrice = 160.00;
+            }
+            else if(sysArray[2] == 'i5' && sysArray[3] >= 2.0 && sysArray[3] >= 3.0)
+            {
+                basePrice = 180.00;
+            }
+            else if(sysArray[2] == 'i7' && sysArray[3] >= 2.0 && sysArray[3] >= 3.0)
+            {
+                basePrice = 230.00;
+            }
+            else
+            {
+                alert('How did you even do this.');
+                break;
+            }
+        }
     }
+    return basePrice;
+}
+
+
+function calcSysPrice(){
+    var basePrice = setBasePrice(getPrices());
+    var ramCost = setRamPrice(getPrices());
+    var hddCost = setHDDCost(getPrices());
 }
